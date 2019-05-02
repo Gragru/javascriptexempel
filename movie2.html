@@ -46,7 +46,7 @@
                 
                 const ptag = document.createElement('p');
                 movie.description = movie.description.substring(0, 300);
-                ptag.textContent = `${movie.description}...Score: ${movie.rt_score}`;
+                ptag.innerHTML = `${movie.description}...<br>Score: ${movie.rt_score}`;
 
                 container.appendChild(card);
                 card.appendChild(h1tag);
