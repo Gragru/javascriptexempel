@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+
+<input type="text" id="url" placeholder="RESTful URL" />
+<input type="button" id="sub" value="Answer" />
+<p>
+<div id="display">xxx</div>
+
+
+<script type="text/javascript">
+    const userAction = async () => {
+    const response = await fetch('https://cors-anywhere.herokuapp.com/http://api.icndb.com/jokes/random');
+    const myJson = await response.json(); //extract JSON from the http response
+    document.write(myJson);
+}
+//document.write("Json");
+</script>
+
+
+</body>
+
+
+
+</html>

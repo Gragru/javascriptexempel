@@ -1,0 +1,70 @@
+<body>
+
+https://www.google.com/controller/Add/2/2<br>
+https://www.google.com/controller/Sub/5/2<br>
+https://www.google.com/controller/Multi/3/2<br><br>
+
+<input type="text" id="url" placeholder="RESTful URL" />
+<input type="button" id="sub" value="Answer" />
+<p>
+<div id="display"></div>
+</body>
+
+<script type="text/javascript">
+
+document.getElementById('sub').onclick = function(){
+
+var url = document.getElementById('url').value;
+var controller = null; 
+var method = null; 
+var parm = []; 
+
+//validating URLs
+function URLValidation(url){
+if (url.indexOf("http://") == 0 || url.indexOf("https://") == 0) {
+var x = url.split('/');
+controller = x[3];
+method = x[4]; 
+parm[0] = x[5]; 
+parm[1] = x[6];
+ }
+}
+
+//Calculations
+function Add(a,b){
+return Number(a)+ Number(b);
+}
+function Sub(a,b){
+return Number(a)/Number(b);
+}
+function Multi(a,b){
+return Number(a)*Number(b);
+}  
+
+//JSON Response
+function ResponseRequest(status,res){
+var res = {status: status, response: res};
+document.getElementById('display').innerHTML = JSON.stringify(res);
+}
+
+
+//Process
+function ProcessRequest(){
+
+if(method=="Add"){
+    ResponseRequest("200",Add(parm[0],parm[1]));
+}else if(method=="Sub"){
+    ResponseRequest("200",Sub(parm[0],parm[1]));
+}else if(method=="Multi"){
+   ResponseRequest("200",Multi(parm[0],parm[1]));
+}else {
+    ResponseRequest("404","Not Found");
+ }
+
+}
+
+URLValidation(url);
+ProcessRequest();
+
+};
+</script>

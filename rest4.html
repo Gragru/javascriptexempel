@@ -6,13 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>REST och JSON</title>
-  <style>
-  div {
-  border: 15px solid green;
-  padding: 20px;
-  margin: 20px;
-} 
-  </style>
+  
 
 </head>
 
@@ -28,10 +22,6 @@
     
     var request = new XMLHttpRequest()
     request.open('GET', 'https://ghibliapi.herokuapp.com/films', true)
-    request.send()
-
-
-
     request.onload = function() {
       var data = JSON.parse(this.response)
 
@@ -51,12 +41,12 @@
         })
       } else {
         const errorMessage = document.createElement('marquee')
-        errorMessage.textContent = `It's not working!`
+        errorMessage.textContent = `Gah, it's not working!`
         app.appendChild(errorMessage)
       }
     }
     
-    
+    request.send()
     
     </script>
 </body>

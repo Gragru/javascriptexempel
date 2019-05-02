@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Chuck Norris Jokes</title>
+</head>
+<body>
+
+<div id="jokeinfo"></div>
+
+
+
+<script language="javascript">
+
+const url = "http://api.icndb.com/jokes/random/3";
+
+const info = document.getElementById('jokeinfo');
+
+fetch(url)
+.then((resp) => resp.json())
+.then(function (data)
+{
+    let jokes = data.value
+    return jokes.map(function (jokeobj)
+    {
+        info.innerHTML += `${jokeobj.joke}<br>`;
+    }
+    
+    )
+
+
+})
+
+</script>
+
+
+
+
+
+</body>
+</html>
